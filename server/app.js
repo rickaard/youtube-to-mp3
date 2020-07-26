@@ -11,8 +11,8 @@ const {
 } = require('./converter');
 
 app.use(express.json());
-app.use('/temp', express.static('temp'));
 app.use(cors());
+app.use('/temp', express.static('temp'));
 
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'hello' })
