@@ -14,11 +14,11 @@ app.use(express.json());
 app.use(cors());
 app.use('/temp', express.static('temp'));
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.status(200).json({ message: 'hello' })
 });
 
-app.post('/video', async (req, res) => {
+app.post('/api/video', async (req, res) => {
     const { ytid } = req.body;
 
     console.log('Tagit emot POST,', ytid);
@@ -49,7 +49,7 @@ app.post('/video', async (req, res) => {
     }
 })
 
-app.post('/convert', async (req, res) => {
+app.post('/api/convert', async (req, res) => {
 
     // youtube id
     const { ytid } = req.body;
