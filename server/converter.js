@@ -96,7 +96,8 @@ const downloadYoutubeVideo = async (ytid) => {
         // const filepath = `${__dirname}/temp/${ytid}.mp4`;
         const file = {
           title: info.title,
-          filepath: `http://localhost:3003/temp/${ytid}.mp4`
+          // filepath: `http://localhost:3003/temp/${ytid}.mp4`
+          filepath: `${__dirname}/temp/${ytid}.mp4`
         }
         resolve(file);
       })
