@@ -16,7 +16,6 @@ const HomePage = () => {
 
     const getVideo = (link, id) => {
         setIsLoading(true);
-
         setYoutubeID(id)
 
         // POST youtube ID to server
@@ -30,7 +29,6 @@ const HomePage = () => {
         })
             .then(response => response.json())
             .then(data => {
-                // console.log(data)
                 setVideolink(data.link);
                 setIsLoading(false);
                 setShowVideo(true);
@@ -65,14 +63,12 @@ const HomePage = () => {
             })
         })
             .then(response => {
-                // console.log(response);
                 if (response.status !== 200) {
                     throw new Error('File not found');
                 }
                 return response.blob();
             })
             .then(data => {
-                console.log(data);
                 download(data, `${youtubeTitle}.mp3`, 'Content-Disposition: attachment');
                 goBackToStart();
             })

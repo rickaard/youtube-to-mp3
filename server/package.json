@@ -15,7 +15,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2",
-    "ytdl-core": "^2.1.7"
+    "ytcog": "^2.2.1",
+    "ytdl-core": "^4.9.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
