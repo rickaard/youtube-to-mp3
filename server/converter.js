@@ -66,6 +66,7 @@ const downloadYoutubeVideo = async (ytid) => {
       downloaded: 0,
       path: "./temp",
       filename: ytid,
+      container: 'mp4',
       audioQuality: "medium",
       progress: (prg, siz, tot) => {
         this.downloaded += siz;
