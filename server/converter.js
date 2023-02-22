@@ -65,7 +65,9 @@ const downloadYoutubeVideo = async (ytid) => {
       audioQuality: "medium",
       progress: (prg, siz, tot) => {
         this.downloaded += siz;
-        process.stdout.write(`Progress ${Math.floor(prg)}% - ${this.downloaded}/${tot}   \r`);
+        process.stdout.write(
+          `Progress ${Math.floor(prg)}% - ${this.downloaded}/${tot}   \r`
+        );
       },
       overwrite: "yes",
     });
@@ -74,4 +76,9 @@ const downloadYoutubeVideo = async (ytid) => {
   } catch (err) {}
 };
 
-module.exports = { checkFileExists, removeFile, convertToMp3, downloadYoutubeVideo };
+module.exports = {
+  checkFileExists,
+  removeFile,
+  convertToMp3,
+  downloadYoutubeVideo,
+};
