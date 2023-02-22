@@ -1,5 +1,4 @@
 const readline = require("readline");
-// const ytdl = require("ytdl-core");
 const ytcog = require("ytcog");
 const fs = require("fs");
 const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
