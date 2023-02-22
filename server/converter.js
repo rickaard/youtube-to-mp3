@@ -27,10 +27,6 @@ const removeFile = (fileId) => {
   });
 };
 
-const removeFileAfterSpecifiedTime = (fileId) => {
-  return console.log("3 sekunder har gått, raderar fil: ", fileId);
-};
-
 const convertToMp3 = (ytid, starttime, endtime, title = "youtube-to-mp3") => {
   const duration = endtime - starttime;
 
@@ -65,13 +61,11 @@ const downloadYoutubeVideo = async (ytid) => {
       downloaded: 0,
       path: "./temp",
       filename: ytid,
-      container: 'mp4',
+      container: "mp4",
       audioQuality: "medium",
       progress: (prg, siz, tot) => {
         this.downloaded += siz;
-        process.stdout.write(
-          `Progress ${Math.floor(prg)}% - ${this.downloaded}/${tot}   \r`
-        );
+        process.stdout.write(`Progress ${Math.floor(prg)}% - ${this.downloaded}/${tot}   \r`);
       },
       overwrite: "yes",
     });
@@ -80,10 +74,4 @@ const downloadYoutubeVideo = async (ytid) => {
   } catch (err) {}
 };
 
-module.exports = {
-  checkFileExists,
-  removeFile,
-  convertToMp3,
-  downloadYoutubeVideo,
-  removeFileAfterSpecifiedTime,
-};
+module.exports = { checkFileExists, removeFile, convertToMp3, downloadYoutubeVideo };
