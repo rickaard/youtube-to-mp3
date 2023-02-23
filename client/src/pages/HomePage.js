@@ -30,7 +30,7 @@ const HomePage = () => {
         setVideolink(data.link);
         setIsLoading(false);
         setShowVideo(true);
-        setYoutubeTitle(data.title);
+        setYoutubeTitle(data.ytid);
       })
       .catch((err) => console.log(err));
   };

@@ -5,6 +5,11 @@ import { fileURLToPath } from "url";
 import { checkFileExists, removeFile, convertToMp3, downloadYoutubeVideo } from "./converter.js";
 import path from "path";
 
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
 
 app.use(express.json());
@@ -39,7 +44,8 @@ app.post("/api/video", async (req, res) => {
     return res.status(200).json({
       status: "ok",
       message: "downloaded video",
-      link: video.filepath,
+      link: `/temp/${video.ytid}.mp4`,
+      ytid: ytid
     });
   } catch (err) {
     console.log(err);
@@ -66,6 +72,7 @@ app.post("/api/convert", async (req, res) => {
       });
     });
   } catch (err) {
+    console.log(err)
     console.log("Error trying to convert video to mp3: ");
 
     res.status(404).json({
@@ -76,12 +83,12 @@ app.post("/api/convert", async (req, res) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
+  // const __filename = fileURLToPath(import.meta.url);
+  // const __dirname = path.dirname(__filename);
 
-  app.use(express.static(__dirname + "/../client/build"));
-  app.get("/*", function (req, res) {
-    res.sendFile(__dirname + "/../client/build", "index.html");
+  app.use(express.static(path.join(__dirname, "client/build")));
+  app.get("/*", function (_req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
 
