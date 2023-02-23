@@ -1,11 +1,11 @@
-const readline = require("readline");
-const ytcog = require("ytcog");
-const fs = require("fs");
-const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path;
-const ffmpeg = require("fluent-ffmpeg");
+import readline from "readline";
+import ytcog from "ytcog";
+import fs from "fs";
+import { path as ffmpegPath } from "@ffmpeg-installer/ffmpeg";
+import ffmpeg from "fluent-ffmpeg";
 ffmpeg.setFfmpegPath(ffmpegPath);
 
-const checkFileExists = (fileId) => {
+export const checkFileExists = (fileId) => {
   return new Promise((resolve, reject) => {
     fs.access(`${__dirname}/temp/${fileId}.mp4`, fs.F_OK, (err) => {
       if (err) {
@@ -17,7 +17,7 @@ const checkFileExists = (fileId) => {
   });
 };
 
-const removeFile = (fileId) => {
+export const removeFile = (fileId) => {
   return new Promise((resolve, reject) => {
     fs.unlink(`${__dirname}/temp/${fileId}.mp4`, (err) => {
       if (err) reject(err);
@@ -27,7 +27,7 @@ const removeFile = (fileId) => {
   });
 };
 
-const convertToMp3 = (ytid, starttime, endtime, title = "youtube-to-mp3") => {
+export const convertToMp3 = (ytid, starttime, endtime, title = "youtube-to-mp3") => {
   const duration = endtime - starttime;
 
   let start = Date.now();
@@ -54,7 +54,7 @@ const convertToMp3 = (ytid, starttime, endtime, title = "youtube-to-mp3") => {
   });
 };
 
-const downloadYoutubeVideo = async (ytid) => {
+export const downloadYoutubeVideo = async (ytid) => {
   try {
     await ytcog.dl({
       id: ytid,
@@ -65,20 +65,11 @@ const downloadYoutubeVideo = async (ytid) => {
       audioQuality: "medium",
       progress: (prg, siz, tot) => {
         this.downloaded += siz;
-        process.stdout.write(
-          `Progress ${Math.floor(prg)}% - ${this.downloaded}/${tot}   \r`
-        );
+        process.stdout.write(`Progress ${Math.floor(prg)}% - ${this.downloaded}/${tot}   \r`);
       },
       overwrite: "yes",
     });
 
     return { filepath: `/temp/${ytid}.mp4` };
   } catch (err) {}
-};
-
-module.exports = {
-  checkFileExists,
-  removeFile,
-  convertToMp3,
-  downloadYoutubeVideo,
 };
