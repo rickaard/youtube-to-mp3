@@ -1,39 +1,36 @@
 .InputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  // margin: 1rem 1rem;
+
+  .Input {
+    border: none;
+    border-bottom: 1px solid;
+    font-size: 1.2rem;
+    background: inherit;
+    color: inherit;
+    padding: 0.2em 0;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    // margin: 1rem 1rem;
+    color: #e6e6e6;
 
-    .Input {
-        border: none;
-        border-bottom: 1px solid;
-        font-size: 1.2rem;
-        background: inherit;
-        color: inherit;
-        padding: 0.2em 0;
-        width: 100%;
-        color: #e6e6e6;
-
-        &:focus {
-            outline:none;
-        }
+    &:focus {
+      outline: none;
     }
+  }
 }
 
-
-
-
 .Label {
-    color: inherit;
-    position: absolute;
-    left: 0;
-    transition: transform .5s;
-    transform: translate(0, 0px) scale(1);
-    cursor: text;
+  color: inherit;
+  position: absolute;
+  left: 0;
+  transition: transform 0.5s;
+  transform: translate(0, 0px) scale(1);
+  cursor: text;
 
-    &.Focused {
+  &.Focused {
     transform: translate(0, -20px) scale(0.75);
     transform-origin: top left;
-    }
+  }
 }
