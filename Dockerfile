@@ -11,9 +11,9 @@ COPY build_frontend.sh ./
 RUN chmod +x ./build_frontend.sh
 RUN ./build_frontend.sh
 
-ENV PORT 3005
+ENV PORT 3010
 ENV NODE_ENV production
 
-EXPOSE 3005
+EXPOSE 3010
 
 CMD ["yarn", "start"]

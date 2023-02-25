@@ -92,5 +92,5 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3010;
 app.listen(PORT, () => console.log(`Server is upp and running on port: ${PORT}`));

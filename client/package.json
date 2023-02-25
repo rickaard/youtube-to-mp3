@@ -1,6 +1,6 @@
 {
   "name": "ytdl-frontend",
-  "proxy": "http://localhost:3005",
+  "proxy": "http://localhost:3010",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
